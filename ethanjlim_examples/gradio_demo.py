@@ -64,7 +64,7 @@ async def run_browser_task(
 	try:
 		agent = Agent(
 			task=task,
-			llm=ChatOpenAI(model='o1-preview'),
+			llm=ChatOpenAI(model='gpt-4o'),
 		)
 		result = await agent.run()
 		#  TODO: The result cloud be parsed better
@@ -75,14 +75,14 @@ async def run_browser_task(
 
 def create_ui():
 	with gr.Blocks(title='Browser Use GUI') as interface:
-		gr.Markdown('# Browser Use Task Automation')
+		gr.Markdown('# Browser Agent Task Automation (Antler Demo)')
 
 		with gr.Row():
 			with gr.Column():
 				api_key = gr.Textbox(label='OpenAI API Key', placeholder='sk-...', type='password')
 				task = gr.Textbox(
 					label='Task Description',
-					placeholder='E.g., Find flights from New York to London for next week',
+					placeholder='E.g., List the best Chinese restaurants in New York and provide their addresses',
 					lines=3,
 				)
 				model = gr.Dropdown(
